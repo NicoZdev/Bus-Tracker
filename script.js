@@ -56,8 +56,18 @@ paradasGreen.forEach(function(parada) {
 
 // Definir la ruta naranja
 var rutaOrange = [
-    [-32.619632, -60.142481], //ruta de ejemplo
-    [-32.623509, -60.147242], //ruta de ejemplo
+    [-32.641697, -60.143763], // inicio
+    [-32.640748, -60.144790], // segunda calle
+    [-32.639289, -60.146204], // antes de la curva
+    [-32.639239, -60.146330], // terminando la curva
+    [-32.639063, -60.147588], // esquina Los Horneros
+    [-32.639544, -60.148285], // esquina Cudini
+    [-32.639041, -60.148776], // cruze Cudini
+    [-32.638232, -60.149559], // Intendente Cudini mitad de cuadra
+    [-32.637570, -60.150211], // Intendente Cudini hasta Los Cardenales
+    [-32.636996, -60.150782],
+    [-32.636527, -60.151246]
+
     // Agrega más coordenadas
 ];
 
