@@ -4,6 +4,7 @@ var map = L.map('map').setView([-32.62018, -60.15495], 15); // Configura la vist
 // mapa de OpenStreetMap con zoom maximo
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19,
+    minZoom: 14,
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 }).addTo(map);
 
@@ -22,8 +23,8 @@ fetch('map.osm')  // Reemplaza 'map.osm' con la ruta del archivo OSM
 
 // Definir la ruta verde con coordenadas
 var rutaGreen = [
-    [-32.613218, -60.145160],
-    [-32.621141, -60.156428],
+    [-32.613218, -60.145160], //ruta de ejemplo
+    [-32.621141, -60.156428], //ruta de ejemplo
     // Agrega más coordenadas
 ];
 
@@ -40,10 +41,11 @@ var customColoredIconGreen = L.icon({
 
 // Agregar marcadores en las paradas verdes
 var paradasGreen = [
-    { coords: [-32.621051, -60.156423], nombre: "Parada" },
-    { coords: [-32.618918, -60.153081], nombre: "Parada" },
-    { coords: [-32.618762, -60.154513], nombre: "Parada" },
-    { coords: [-32.613912, -60.146005], nombre: "Parada" }
+    { coords: [-32.621051, -60.156423], nombre: "Parada de ejemplo" },
+    { coords: [-32.618918, -60.153081], nombre: "Parada de ejemplo" },
+    { coords: [-32.618762, -60.154513], nombre: "Parada de ejemplo" },
+    { coords: [-32.613912, -60.146005], nombre: "Parada de ejemplo" },
+    { coords: [-32.623680, -60.164743], nombre: "Parada Gato Negro"}
 ];
 
 paradasGreen.forEach(function(parada) {
@@ -54,8 +56,8 @@ paradasGreen.forEach(function(parada) {
 
 // Definir la ruta naranja
 var rutaOrange = [
-    [-32.619632, -60.142481],
-    [-32.623509, -60.147242],
+    [-32.619632, -60.142481], //ruta de ejemplo
+    [-32.623509, -60.147242], //ruta de ejemplo
     // Agrega más coordenadas
 ];
 
@@ -72,10 +74,10 @@ var customColoredIconOrange = L.icon({
 
 // Agregar marcadores en las paradas naranjas
 var paradasOrange = [
-    { coords: [-32.623583, -60.147234], nombre: "Parada" },
-    { coords: [-32.621758, -60.145163], nombre: "Parada" },
-    { coords: [-32.620229, -60.143106], nombre: "Parada" },
-    { coords: [-32.622180, -60.142462], nombre: "Parada" }
+    { coords: [-32.623583, -60.147234], nombre: "Parada de ejemplo" },
+    { coords: [-32.621758, -60.145163], nombre: "Parada de ejemplo" },
+    { coords: [-32.620229, -60.143106], nombre: "Parada de ejemplo" },
+    { coords: [-32.622180, -60.142462], nombre: "Parada de ejemplo" }
 ];
 
 paradasOrange.forEach(function(parada) {
