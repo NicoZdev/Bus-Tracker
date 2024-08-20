@@ -89,3 +89,31 @@ paradasOrange.forEach(function(parada) {
 // Ajustar la vista del mapa para mostrar las rutas
 var group = new L.featureGroup([rutaLayerGreen, rutaLayerOrange]);
 map.fitBounds(group.getBounds());
+
+// Obtener la ubicación del usuario
+if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function(position) {
+        var lat = position.coords.latitude;
+        var lon = position.coords.longitude;
+
+        // Icono de la persona
+        var userIcon = L.icon({
+            iconUrl: 'persona.png', 
+            iconSize: [32, 32],
+            iconAnchor: [16, 32],
+            popupAnchor: [0, -32]
+        });
+
+        // Añadir un marcador para la ubicación del usuario
+        var userMarker = L.marker([lat, lon], { icon: userIcon }).addTo(map)
+            .bindPopup('Estás aquí')
+            .openPopup();
+
+        // Ajustar la vista del mapa para centrar en la ubicación del usuario
+        map.setView([lat, lon], 15);
+    }, function() {
+        alert("No se pudo obtener tu ubicación.");
+    });
+} else {
+    alert("La geolocalización no es compatible con este navegador.");
+}
