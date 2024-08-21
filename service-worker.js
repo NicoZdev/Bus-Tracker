@@ -1,12 +1,12 @@
 const CACHE_NAME = 'colectivos-cache-v1';
 const urlsToCache = [
   '/',
-  'index.html',
-  'css/styles.css',
-  'js/script.js',
-  'img/parada-verde.png',
-  'img/parada-naranja.png',
-  'img/persona.png'
+  '/index.html',
+  '/css/styles.css',
+  '/js/script.js',
+  '/img/parada-verde.png',
+  '/img/parada-naranja.png',
+  '/img/persona.png'
 ];
 
 self.addEventListener('install', (event) => {
