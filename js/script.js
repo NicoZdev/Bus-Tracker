@@ -9,7 +9,7 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 }).addTo(map);
 
 // Convertir OSM a GeoJSON
-fetch('/bus-tracker/map.osm')  // Reemplaza 'map.osm' con la ruta del archivo OSM
+fetch('map.osm')  // Reemplaza 'map.osm' con la ruta del archivo OSM
     .then(response => response.text())
     .then(osmData => {
         var geojson = osmtogeojson(new DOMParser().parseFromString(osmData, 'text/xml'));
