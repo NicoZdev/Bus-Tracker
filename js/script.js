@@ -195,40 +195,39 @@ if (navigator.geolocation) {
     alert("La geolocalización no es compatible con este navegador.");
 }
 
-// Variable para almacenar el evento beforeinstallprompt
+// Variable para almacenar los botones
 let deferredPrompt;
+const installContainer = document.getElementById('install-container');
+const installButton = document.getElementById('install-button');
+const closeButton = document.getElementById('close-button');
 
-// Escuchar el evento beforeinstallprompt
 window.addEventListener('beforeinstallprompt', (e) => {
-  // Prevenir el comportamiento predeterminado del navegador
-  e.preventDefault();
-  
-  // Almacenar el evento para poder mostrar el cuadro de instalación más tarde
-  deferredPrompt = e;
-
-  // Opcional: mostrar un botón o mensaje para instalar la PWA
-  const installButton = document.getElementById('installButton');
-  installButton.style.display = 'block';
-
-  // Manejar el clic en el botón de instalación
-  installButton.addEventListener('click', () => {
-    // Mostrar el cuadro de instalación
-    deferredPrompt.prompt();
-    
-    // Esperar la elección del usuario
-    deferredPrompt.userChoice.then((choiceResult) => {
-      if (choiceResult.outcome === 'accepted') {
-        console.log('El usuario aceptó la instalación');
-      } else {
-        console.log('El usuario rechazó la instalación');
-      }
-      // Restablecer la variable deferredPrompt
-      deferredPrompt = null;
-    });
-  });
+    // Evitar que el navegador muestre el prompt automáticamente
+    e.preventDefault();
+    // Guardar el evento para que lo podamos usar más tarde
+    deferredPrompt = e;
+    // Mostrar el contenedor del botón
+    installContainer.style.display = 'block';
 });
 
-// Opcional: Manejar el evento appinstalled para realizar acciones después de la instalación
-window.addEventListener('appinstalled', (evt) => {
-  console.log('PWA instalada');
+installButton.addEventListener('click', () => {
+    if (deferredPrompt) {
+        // Mostrar el prompt de instalación
+        deferredPrompt.prompt();
+        deferredPrompt.userChoice.then((choiceResult) => {
+            if (choiceResult.outcome === 'accepted') {
+                console.log('Usuario aceptó la instalación.');
+            } else {
+                console.log('Usuario rechazó la instalación.');
+            }
+            // Ocultar el contenedor del botón después de la acción
+            installContainer.style.display = 'none';
+            deferredPrompt = null;
+        });
+    }
+});
+
+closeButton.addEventListener('click', () => {
+    // Ocultar el contenedor del botón cuando se cierra
+    installContainer.style.display = 'none';
 });
