@@ -13,7 +13,7 @@
         "type": "image/png"
       }
     ],
-    "start_url": "/Bus-Tracker/index.html",
+    "start_url": "/Bus-Tracker/",
     "display": "standalone",
     "background_color": "#ffffff",
     "theme_color": "#020096"
