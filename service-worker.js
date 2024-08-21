@@ -1,12 +1,12 @@
 const CACHE_NAME = 'colectivos-cache-v1';
 const urlsToCache = [
-  '/bus-tracker/',
-  '/bus-tracker/index.html',
-  '/bus-tracker/css/styles.css',
-  '/bus-tracker/js/script.js',
-  '/bus-tracker/img/parada-verde.png',
-  '/bus-tracker/img/parada-naranja.png',
-  '/bus-tracker/img/persona.png'
+  '/',
+  'index.html',
+  'css/styles.css',
+  'js/script.js',
+  'img/parada-verde.png',
+  'img/parada-naranja.png',
+  'img/persona.png'
 ];
 
 self.addEventListener('install', (event) => {
