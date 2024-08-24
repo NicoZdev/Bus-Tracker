@@ -14,63 +14,66 @@
 <body>
     <!-- Encabezado -->
     <header>
-      <nav class="navbar navbar-expand-lg fondo">
-          <div class="container-fluid d-flex justify-content-between">
-            <!-- Logo de la empresa -->
-            <a class="navbar-brand" href="#">
-              <img src="img/logo.webp" alt="Logo de la Empresa">
-            </a>
-        
-            <!-- Boton del menu desplegable -->
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            
-            <!-- Ubicacion Menu desplegable -->
-            <div class="collapse navbar-collapse" id="navbarNav">
-              <ul class="navbar-nav ml-auto">
-                <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Menú
-                  </a>
-                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">Línea Naranja</a>
-                    <a class="dropdown-item" href="#">Línea Verde</a>
-                    <a class="dropdown-item" href="#">Línea Amarilla</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Contáctenos</a>
-                  </div>
-                </li>
-              </ul>
+        <nav class="navbar navbar-expand-lg fondo">
+            <div class="container-fluid d-flex justify-content-between align-items-center">
+                <!-- Logo de la empresa -->
+                <a class="navbar-brand" href="#">
+                    <img src="img/logo.webp" alt="Logo de la Empresa" class="logo">
+                </a>
+               <!-- Botón de cambio de tema -->
+                <button id="theme-toggle" class="btn">
+                   <img src="img/luna.png" alt="Cambiar a modo oscuro" id="theme-icon" class="theme-icon">
+                </button>
+                <!-- Botón del menú desplegable -->
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                
+                <!-- Ubicación del menú desplegable -->
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Menú
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="#">Línea Naranja</a>
+                                <a class="dropdown-item" href="#">Línea Verde</a>
+                                <a class="dropdown-item" href="#">Línea Amarilla</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#">Contáctenos</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
             </div>
-          </div>
         </nav>       
-  </header>
-<!-- Fin de encabezado -->
+    </header>
+    <!-- Fin de encabezado -->
 
-<!-- Mapa en el centro -->
-<div id="map"></div>
-<!-- fin del mapa -->
+    <!-- Mapa en el centro -->
+    <div id="map"></div>
+    <!-- Fin del mapa -->
 
-<!-- Pie de pagina -->
-<footer class="footer">
-  <div class="container-fluid">
-    <!-- Informacion del pie de pagina -->
-    <div class="footer-content">
-      <p style="font-size: 16px;">Desarrollado por <a href="https://www.google.com/"> Innovaplay </a></p>
-      <p>&copy; 2024 Innovaplay. Todos los derechos reservados.</p>
-      <p>Viamonte 1071</p>
-    </div>
-  </div>
+    <!-- Pie de página -->
+    <footer class="footer">
+        <div class="container-fluid">
+            <!-- Información del pie de página -->
+            <div class="footer-content">
+                <p style="font-size: 16px;">Desarrollado por <a href="https://www.google.com/"> Innovaplay </a></p>
+                <p>&copy; 2024 Innovaplay. Todos los derechos reservados.</p>
+                <p>Viamonte 1071</p>
+            </div>
+        </div>
 
-    <!-- Iconos al margen derecho -->
-    <div class="social-icons">
-      <a href="https://wa.me/123456789" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-      <a href="https://facebook.com" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
-      <a href="#" id="install-button" title="Descargar App"><i class="fas fa-download"></i></a>
-    </div>
-</footer>
-<!-- Fin de pie de pagina -->
+        <!-- Iconos al margen derecho -->
+        <div class="social-icons">
+            <a href="https://wa.me/123456789" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://facebook.com" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" id="install-button" title="Descargar App"><i class="fas fa-download"></i></a>
+        </div>
+    </footer>
+    <!-- Fin de pie de página -->
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
@@ -80,40 +83,40 @@
     <script src="js/script.js"></script>
     <script>
         if ('serviceWorker' in navigator) {
-          window.addEventListener('load', function() {
-            navigator.serviceWorker.register('service-worker.js').then(function(registration) {
-              console.log('ServiceWorker registration successful with scope: ', registration.scope);
-            }, function(err) {
-              console.log('ServiceWorker registration failed: ', err);
+            window.addEventListener('load', function() {
+                navigator.serviceWorker.register('service-worker.js').then(function(registration) {
+                    console.log('ServiceWorker registration successful with scope: ', registration.scope);
+                }, function(err) {
+                    console.log('ServiceWorker registration failed: ', err);
+                });
             });
-          });
         }
     </script>
     <script>
-      let deferredPrompt;
-  
-      // Escuchar el evento beforeinstallprompt
-      window.addEventListener('beforeinstallprompt', (e) => {
-          e.preventDefault();
-          deferredPrompt = e; // Guardar el evento para dispararlo después
-      });
-  
-      // Manejar el clic en el ícono de descarga para instalar la PWA
-      document.getElementById('install-button').addEventListener('click', (e) => {
-          if (deferredPrompt) {
-              deferredPrompt.prompt(); // Mostrar el prompt de instalación
-              deferredPrompt.userChoice.then((choiceResult) => {
-                  if (choiceResult.outcome === 'accepted') {
-                      console.log('User accepted the A2HS prompt');
-                  } else {
-                      console.log('User dismissed the A2HS prompt');
-                  }
-                  deferredPrompt = null; // Resetear el deferredPrompt
-              });
-          } else {
-              console.log('Deferred prompt not available');
-          }
-      });
+        let deferredPrompt;
+
+        // Escuchar el evento beforeinstallprompt
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e; // Guardar el evento para dispararlo después
+        });
+
+        // Manejar el clic en el ícono de descarga para instalar la PWA
+        document.getElementById('install-button').addEventListener('click', (e) => {
+            if (deferredPrompt) {
+                deferredPrompt.prompt(); // Mostrar el prompt de instalación
+                deferredPrompt.userChoice.then((choiceResult) => {
+                    if (choiceResult.outcome === 'accepted') {
+                        console.log('User accepted the A2HS prompt');
+                    } else {
+                        console.log('User dismissed the A2HS prompt');
+                    }
+                    deferredPrompt = null; // Resetear el deferredPrompt
+                });
+            } else {
+                console.log('Deferred prompt not available');
+            }
+        });
     </script>
 </body>
 </html>
