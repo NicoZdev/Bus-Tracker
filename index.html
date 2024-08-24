@@ -4,37 +4,77 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Seguimiento de Colectivos</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
     <link rel="stylesheet" href="css/styles.css">
     <link rel="manifest" href="manifest.json"> <!-- Añadido para el PWA -->
     <link rel="icon" href="favicon.ico" type="image/x-icon">
 </head>
 <body>
-    <!-- Encabezado con boton de busqueda o notificaciones, posible Logo -->
+    <!-- Encabezado -->
     <header>
-        <h1>Seguimiento de Colectivos</h1>
-    </header>
+      <nav class="navbar navbar-expand-lg fondo">
+          <div class="container-fluid d-flex justify-content-between">
+            <!-- Logo de la empresa -->
+            <a class="navbar-brand" href="#">
+              <img src="img/logo.webp" alt="Logo de la Empresa">
+            </a>
+        
+            <!-- Boton del menu desplegable -->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <!-- Ubicacion Menu desplegable -->
+            <div class="collapse navbar-collapse" id="navbarNav">
+              <ul class="navbar-nav ml-auto">
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Menú
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="#">Línea Naranja</a>
+                    <a class="dropdown-item" href="#">Línea Verde</a>
+                    <a class="dropdown-item" href="#">Línea Amarilla</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">Contáctenos</a>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>       
+  </header>
+<!-- Fin de encabezado -->
 
-    <!-- Mapa en el centro -->
-    <div id="map"></div>
+<!-- Mapa en el centro -->
+<div id="map"></div>
+<!-- fin del mapa -->
 
-    <!-- Menú inferior solamente con lineas y tiempo aproximado -->
-    <footer>
-        <label for="lineaSelect">Selecciona la línea:</label>
-        <select id="lineaSelect">
-            <option value="todas">Todas las líneas</option>
-            <option value="linea1">Línea 1</option>
-            <option value="linea2">Línea 2</option>
-            <!-- nuevas lineas de colectivos aqui -->
-        </select>
-        <p>Tiempo de llegada: </p>
-    </footer>
-
-    <div id="install-container">
-      <button id="install-button">Instalar</button>
-      <button id="close-button">Cerrar</button>
+<!-- Pie de pagina -->
+<footer class="footer">
+  <div class="container-fluid">
+    <!-- Informacion del pie de pagina -->
+    <div class="footer-content">
+      <p style="font-size: 16px;">Desarrollado por <a href="https://www.google.com/"> Innovaplay </a></p>
+      <p>&copy; 2024 Innovaplay. Todos los derechos reservados.</p>
+      <p>Viamonte 1071</p>
     </div>
+  </div>
 
+    <!-- Iconos al margen derecho -->
+    <div class="social-icons">
+      <a href="https://wa.me/123456789" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+      <a href="https://facebook.com" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+      <a href="#" id="install-button" title="Descargar App"><i class="fas fa-download"></i></a>
+    </div>
+</footer>
+<!-- Fin de pie de pagina -->
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
     <script src="https://unpkg.com/osmtogeojson@3.0.0/osmtogeojson.js"></script>
     <script src="js/script.js"></script>
@@ -48,6 +88,32 @@
             });
           });
         }
-      </script>
+    </script>
+    <script>
+      let deferredPrompt;
+  
+      // Escuchar el evento beforeinstallprompt
+      window.addEventListener('beforeinstallprompt', (e) => {
+          e.preventDefault();
+          deferredPrompt = e; // Guardar el evento para dispararlo después
+      });
+  
+      // Manejar el clic en el ícono de descarga para instalar la PWA
+      document.getElementById('install-button').addEventListener('click', (e) => {
+          if (deferredPrompt) {
+              deferredPrompt.prompt(); // Mostrar el prompt de instalación
+              deferredPrompt.userChoice.then((choiceResult) => {
+                  if (choiceResult.outcome === 'accepted') {
+                      console.log('User accepted the A2HS prompt');
+                  } else {
+                      console.log('User dismissed the A2HS prompt');
+                  }
+                  deferredPrompt = null; // Resetear el deferredPrompt
+              });
+          } else {
+              console.log('Deferred prompt not available');
+          }
+      });
+    </script>
 </body>
 </html>
