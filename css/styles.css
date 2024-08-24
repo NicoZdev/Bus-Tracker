@@ -32,7 +32,7 @@ footer {
 */
 
 .fondo {
-    background-color: #f8f9fa;
+    background-color: #dadada;
 }
 
 .fondo .dropdown-item {
@@ -78,11 +78,11 @@ footer {
 }
 
 .footer {
-  background-color: #ffffff;
+  background-color: #dadada;
   padding: 20px;
   position: relative;
   text-align: left;
-  border-top: 1px solid #ffffff;
+  border-top: 1px solid #dadada;
 }
   
 /* Estilos pie de pagina */
