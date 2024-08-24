@@ -2,7 +2,7 @@
 var map = L.map('map').setView([-32.62018, -60.15495], 15); // Configura la vista inicial con un zoom alto y coordenadas
 
 // mapa de OpenStreetMap con zoom maximo
-L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png', {
+let tileLayer = L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png', {
     maxZoom: 19,
     minZoom: 14,
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -20,6 +20,23 @@ fetch('map.osm')  // Reemplaza 'map.osm' con la ruta del archivo OSM
         // Ajustar la vista del mapa al contenido del GeoJSON
         map.fitBounds(L.geoJSON(geojson).getBounds());
     });
+
+// Función para alternar entre modo claro y oscuro
+function toggleTheme() {
+    const body = document.body;
+    const isDarkMode = body.classList.toggle('dark-mode');
+    
+    if (isDarkMode) {
+        tileLayer.setUrl('https://cartodb-basemaps-{s}.global.ssl.fastly.net/dark_all/{z}/{x}/{y}.png');
+        document.getElementById('theme-icon').src = 'img/sol.png'; // Cambiar al ícono del sol en modo oscuro
+    } else {
+        tileLayer.setUrl('https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png');
+        document.getElementById('theme-icon').src = 'img/luna.png'; // Cambiar al ícono de la luna en modo claro
+    }
+}
+
+// Evento para el botón de cambio de tema
+document.getElementById('theme-toggle').addEventListener('click', toggleTheme);
 
 // Definir la ruta verde con coordenadas
 var rutaGreen = [
