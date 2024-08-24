@@ -124,3 +124,31 @@ footer {
 .social-icons a:hover {
   color: #0056b3;
 }
+/* Boton modo noche */
+.logo {
+  max-width: 150px; /* Ajusta según el tamaño adecuado del logo */
+  height: auto;
+}
+
+#theme-toggle {
+  border: none;
+  background: transparent;
+  padding: 0;
+  margin-left: 88%; /* Ajusta este valor para mover el botón más a la derecha */
+}
+
+.theme-icon {
+  width: 24px;
+  height: 24px;
+}
+
+/* Estilos para el modo oscuro */
+body.dark-mode .navbar,
+body.dark-mode .footer {
+    background-color: #1f1f1f;
+    color: #fff;
+}
+
+body.dark-mode .theme-icon {
+    content: url('img/sol.png');
+}
