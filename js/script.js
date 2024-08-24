@@ -2,7 +2,7 @@
 var map = L.map('map').setView([-32.62018, -60.15495], 15); // Configura la vista inicial con un zoom alto y coordenadas
 
 // mapa de OpenStreetMap con zoom maximo
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png', {
     maxZoom: 19,
     minZoom: 14,
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -194,40 +194,3 @@ if (navigator.geolocation) {
 } else {
     alert("La geolocalización no es compatible con este navegador.");
 }
-
-// Variable para almacenar los botones
-let deferredPrompt;
-const installContainer = document.getElementById('install-container');
-const installButton = document.getElementById('install-button');
-const closeButton = document.getElementById('close-button');
-
-window.addEventListener('beforeinstallprompt', (e) => {
-    // Evitar que el navegador muestre el prompt automáticamente
-    e.preventDefault();
-    // Guardar el evento para que lo podamos usar más tarde
-    deferredPrompt = e;
-    // Mostrar el contenedor del botón
-    installContainer.style.display = 'block';
-});
-
-installButton.addEventListener('click', () => {
-    if (deferredPrompt) {
-        // Mostrar el prompt de instalación
-        deferredPrompt.prompt();
-        deferredPrompt.userChoice.then((choiceResult) => {
-            if (choiceResult.outcome === 'accepted') {
-                console.log('Usuario aceptó la instalación.');
-            } else {
-                console.log('Usuario rechazó la instalación.');
-            }
-            // Ocultar el contenedor del botón después de la acción
-            installContainer.style.display = 'none';
-            deferredPrompt = null;
-        });
-    }
-});
-
-closeButton.addEventListener('click', () => {
-    // Ocultar el contenedor del botón cuando se cierra
-    installContainer.style.display = 'none';
-});
