@@ -6,37 +6,19 @@ body {
     flex-direction: column;
     height: 100vh;
 }
-/*
-header {
-    background-color: #48ff00;
-    color: white;
-    padding: 10px;
-    text-align: center;
-}
-*/
+
 #map {
     flex-grow: 1;
     width: 100%;
     height: calc(100vh - 120px);
 }
 
-/*
-footer {
-    background-color: #020096;
-    color: white;
-    padding: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-}
-*/
-
 .fondo {
-    background-color: #dadada;
+    background-color: #00ffdf;
 }
 
 .fondo .dropdown-item {
-    color: #1900ff; /* Color del letra en menu desplegable */
+    color: #000; /* Color del letra en menu desplegable */
 }
   
 .fondo .navbar-nav {
@@ -44,11 +26,11 @@ footer {
 }
   
 .fondo .navbar-nav .nav-link {
-    color: #007bff; /* Color de la letra dento del menu */
+    color: #000; /* Color de la letra dento del menu */
 }
   
 .fondo .navbar-nav .nav-link:hover {
-    color: #0056b3; /* Color de la letra del menu en hover */
+    color: #000; /* Color de la letra del menu en hover */
 }
   
 .fondo .navbar-brand img {
@@ -78,11 +60,11 @@ footer {
 }
 
 .footer {
-  background-color: #dadada;
+  background-color: #00ffdf;
   padding: 20px;
   position: relative;
   text-align: left;
-  border-top: 1px solid #dadada;
+  border-top: 1px solid #000;
 }
   
 /* Estilos pie de pagina */
@@ -97,7 +79,7 @@ footer {
   
 /* Enlace pie de pagina */
 .footer-content a {
-  color: #007bff;
+  color: #000;
   text-decoration: none;
 }
   
@@ -116,13 +98,13 @@ footer {
 }
   
 .social-icons a {
-  color: #007bff;
+  color: #000;
   font-size: 24px;
   text-decoration: none;
 }
   
 .social-icons a:hover {
-  color: #0056b3;
+  color: #000;
 }
 /* Boton modo noche */
 .logo {
@@ -143,12 +125,27 @@ footer {
 }
 
 /* Estilos para el modo oscuro */
+body.dark-mode {
+  background-color: #0027bb; /* Fondo azul oscuro */
+  color: #fff; /* Texto blanco */
+}
+
 body.dark-mode .navbar,
 body.dark-mode .footer {
-    background-color: #1f1f1f;
-    color: #fff;
+  background-color: #0027bb; /* Fondo azul oscuro en navbar y footer */
+}
+
+body.dark-mode .navbar-nav .nav-link,
+body.dark-mode .dropdown-item,
+body.dark-mode .footer-content a,
+body.dark-mode .social-icons a {
+  color: #fff; /* Texto blanco en enlaces y íconos */
+}
+
+body.dark-mode .navbar-brand img {
+  content: url('img/fondoblack.png'); /* Cambiar imagen del logo */
 }
 
 body.dark-mode .theme-icon {
-    content: url('img/sol.png');
+  content: url('img/sol.png'); /* Imagen del sol en modo oscuro */
 }
