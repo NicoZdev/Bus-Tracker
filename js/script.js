@@ -3,7 +3,7 @@ var map = L.map('map').setView([-32.62018, -60.15495], 15); // Configura la vist
 
 // mapa de OpenStreetMap con zoom maximo
 let tileLayer = L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png', {
-    maxZoom: 19,
+    maxZoom: 18,
     minZoom: 14,
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 }).addTo(map);
@@ -20,23 +20,6 @@ fetch('map.osm')  // Reemplaza 'map.osm' con la ruta del archivo OSM
         // Ajustar la vista del mapa al contenido del GeoJSON
         map.fitBounds(L.geoJSON(geojson).getBounds());
     });
-
-// Función para alternar entre modo claro y oscuro
-function toggleTheme() {
-    const body = document.body;
-    const isDarkMode = body.classList.toggle('dark-mode');
-    
-    if (isDarkMode) {
-        tileLayer.setUrl('https://cartodb-basemaps-{s}.global.ssl.fastly.net/dark_all/{z}/{x}/{y}.png');
-        document.getElementById('theme-icon').src = 'img/sol.png'; // Cambiar al ícono del sol en modo oscuro
-    } else {
-        tileLayer.setUrl('https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png');
-        document.getElementById('theme-icon').src = 'img/luna.png'; // Cambiar al ícono de la luna en modo claro
-    }
-}
-
-// Evento para el botón de cambio de tema
-document.getElementById('theme-toggle').addEventListener('click', toggleTheme);
 
 // Definir la ruta verde con coordenadas
 var rutaGreen = [
@@ -211,3 +194,27 @@ if (navigator.geolocation) {
 } else {
     alert("La geolocalización no es compatible con este navegador.");
 }
+
+// Función para alternar entre modo claro y oscuro
+function toggleTheme() {
+    const body = document.body;
+    const isDarkMode = body.classList.toggle('dark-mode');
+    
+    // Cambiar la URL del tileLayer según el modo
+    if (isDarkMode) {
+        tileLayer.setUrl('https://cartodb-basemaps-{s}.global.ssl.fastly.net/dark_all/{z}/{x}/{y}.png');
+        setTimeout(() => {
+            document.getElementById('theme-icon').src = 'img/sol.png?' + new Date().getTime(); // Cambiar al ícono del sol en modo oscuro
+        }, 50); // Añadir un pequeño retraso
+        document.querySelector('.navbar-brand img').src = 'img/fondoblack.png'; // Cambiar el logo a fondo negro en modo oscuro
+    } else {
+        tileLayer.setUrl('https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png');
+        setTimeout(() => {
+            document.getElementById('theme-icon').src = 'img/luna.png?' + new Date().getTime(); // Cambiar al ícono de la luna en modo claro
+        }, 50); // Añadir un pequeño retraso
+        document.querySelector('.navbar-brand img').src = 'img/fondowhite.png?' + new Date().getTime(); // Cambiar el logo
+    }
+}
+
+// Añadir el manejador de eventos para el botón de cambio de tema
+document.getElementById('theme-toggle').addEventListener('click', toggleTheme);
